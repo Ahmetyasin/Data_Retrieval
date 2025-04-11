@@ -174,24 +174,29 @@ This repository contains a Jupyter notebook that retrieves detailed parental gui
 - Jupyter Notebook
 - pip (Python package installer)
 
-## Installation
-
-1. Clone this repository:
-```bash
-git clone https://github.com/Ahmetyasin/Data_Retrieval.git
-cd Data_Retrieval
-```
-
-2. Create and activate a virtual environment (recommended):
+## Setup
+1. Create virtual environment:
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install required packages:
+2. Install dependencies:
 ```bash
-pip install jupyter jmespath lxml typedload
+pip install -r requirements.txt
 ```
+
+## Running the Notebook
+1. Start Jupyter:
+```bash
+jupyter notebook
+```
+
+2. Open `movie_guides.ipynb` in your browser
+
+## Project Structure
+- `movie_guides.ipynb`: Main notebook for movie data analysis
+- `requirements.txt`: Project dependencies
 
 ## Usage
 
