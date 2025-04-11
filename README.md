@@ -156,3 +156,82 @@ Special thanks to:
 - All contributors to the original Cinemagoer (IMDbPY) project.
 - The IMDb website for providing the data.
 - The Python community for their invaluable feedback and contributions.
+
+# Movie Parental Guide Data Retrieval
+
+This repository contains a Jupyter notebook that retrieves detailed parental guide information for movies from IMDb using the cinemagoerng package.
+
+## Features
+
+- Retrieves comprehensive parental guide information for any movie
+- Displays movie ratings and content advisories
+- Categorizes content warnings (violence, nudity, profanity, etc.)
+- Works with any valid IMDb movie ID
+
+## Prerequisites
+
+- Python 3.10 or higher
+- Jupyter Notebook
+- pip (Python package installer)
+
+## Installation
+
+1. Clone this repository:
+```bash
+git clone https://github.com/Ahmetyasin/Data_Retrieval.git
+cd Data_Retrieval
+```
+
+2. Create and activate a virtual environment (recommended):
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install required packages:
+```bash
+pip install jupyter jmespath lxml typedload
+```
+
+## Usage
+
+1. Open the Jupyter notebook:
+```bash
+jupyter notebook movie_guides.ipynb
+```
+
+2. Run the cells in order:
+   - First cell installs required dependencies
+   - Second cell contains the main function for retrieving movie guides
+   - Third cell contains example movie IDs
+
+3. To get parental guide for a different movie:
+   - Find the movie's IMDb ID (e.g., tt0114709 for Toy Story)
+   - Add the ID to the `movie_ids` list in the last cell
+   - Run the cell to get the parental guide information
+
+## Example Output
+
+The script will display:
+- Movie title and IMDb ID
+- MPAA rating
+- Detailed content advisories for:
+  - Nudity
+  - Violence
+  - Profanity
+  - Alcohol/Drugs
+  - Frightening/Intense Scenes
+
+## Notes
+
+- The script uses a browser-like user agent to avoid detection
+- Rate limiting is handled automatically
+- Some movies may not have complete parental guide information
+
+## Contributing
+
+Feel free to submit issues and enhancement requests.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

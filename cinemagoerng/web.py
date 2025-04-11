@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Literal, TypeAlias
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
+from urllib.parse import urlparse
 
 from . import model, piculet, registry
 
@@ -34,8 +35,19 @@ def fetch(url: str, **kwargs) -> str:
     request.add_header("User-Agent", _USER_AGENT)
     if "graphql" in url:
         request.add_header("Content-Type", "application/json")
-    with urlopen(request) as response:
-        content: bytes = response.read()
+    try:
+        with urlopen(request) as response:
+            content: bytes = response.read()
+    except HTTPError as e:
+        if e.status == 308:  # Permanent Redirect
+            new_url = e.headers.get('Location')
+            if new_url:
+                if new_url.startswith('/'):
+                    # Handle relative URLs
+                    parsed = urlparse(url)
+                    new_url = f"{parsed.scheme}://{parsed.netloc}{new_url}"
+                return fetch(new_url, **kwargs)
+        raise e
     return content.decode("utf-8")
 
 
